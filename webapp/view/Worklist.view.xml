@@ -1,0 +1,113 @@
+<mvc:View
+	controllerName="gruppo3.gruppo3.controller.Worklist"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic">
+
+<Page showNavButton="true" navButtonPress=" onNavBack" >
+	<semantic:SemanticPage
+    
+		id="page"
+		headerPinnable="false"
+		toggleHeaderOnTitleClick="false">
+
+		<semantic:titleHeading>
+			<Title
+                text="{i18n>worklistTitle}"
+				level="H2"/>
+                
+		</semantic:titleHeading>
+
+         <semantic:headerContent>
+      <HBox class="breadCrumbs" width="100%" alignItems="Center">
+        <SegmentedButton class="sapUiSmallMarginBottom" width="100%">
+          
+        </SegmentedButton>
+      </HBox>
+    </semantic:headerContent>
+
+		<semantic:content>
+			<Table
+				id="table"
+				width="auto"
+				items="{
+					path: '/Employees',
+					sorter: {
+						path: 'EmployeeID',
+						descending: false
+					}
+				}"
+				noDataText="{worklistView>/tableNoDataText}"
+				busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true"
+				growingScrollToLoad="true"
+				updateFinished=".onUpdateFinished">
+
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title
+							id="tableHeader"
+							text="{i18n>title}"
+							level="H3"/>
+						<ToolbarSpacer />
+                        <Button icon="sap-icon://action" text="Export as Excel" press=".exportAsExcel"/>
+            <Button icon="sap-icon://sort" press="onSorter"/>
+						<SearchField
+							id="searchField"
+							tooltip="{i18n>worklistSearchTooltip}"
+							search=".onSearch">
+							<layoutData>
+								<OverflowToolbarLayoutData
+									maxWidth="200px"
+									priority="NeverOverflow"/>
+							</layoutData>
+						</SearchField>
+					</OverflowToolbar>
+				</headerToolbar>
+
+				<columns>
+					<Column id="nameColumn">
+						<Text text="{i18n>EmployeeID}" id="nameColumnTitle"/>
+					</Column>
+                    <Column id="nameColumn1">
+						<Text text="{i18n>FirstName}" id="nameColumnTitle1"/>
+					</Column>
+                 <Column id="nameColumn2">
+						<Text text="{i18n>LastName}" id="nameColumnTitle2"/>
+					</Column>
+					<Column id="unitNumberColumn" hAlign="End">
+						<Text text="{i18n>Title}" id="unitNumberColumnTitle"/>
+					</Column>
+				</columns>
+
+				<items>
+					<ColumnListItem
+						type="Navigation"
+						press=".onPress">
+						<cells>
+                        <ObjectNumber
+								number=
+								"{EmployeeID}"/>
+							<ObjectIdentifier
+								title="{FirstName}"/>
+                                	<ObjectIdentifier
+								title="{LastName}"/>
+                                	<ObjectIdentifier
+								title="{Title}"/>
+                                	
+							
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+		</semantic:sendEmailAction>
+
+
+	</semantic:SemanticPage>
+    </Page>
+
+</mvc:View>

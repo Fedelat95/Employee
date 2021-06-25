@@ -1,0 +1,187 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "gruppo3.gruppo3",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "resources": "resources.json",
+        "dataSources": {
+            "mainService": {
+                "uri": "/V2/Northwind/Northwind.svc/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "secondService": {
+                "uri": "/sap/opu/odata/iwbep/GWSAMPLE_BASIC/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "gruppo3.gruppo3.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.66.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.f": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "gruppo3.gruppo3.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true
+            },
+            "es5": {
+                "dataSource": "secondService",
+                "preload": true
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "gruppo3.gruppo3.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "bypassed": {
+                    "target": [
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "Home",
+                    "target": [
+                        "Home"
+                    ]
+                },
+                {
+                    "pattern": "worklist",
+                    "name": "worklist",
+                    "target": [
+                        "worklist"
+                    ]
+                },
+                 {
+                    "pattern": "EmployeesCheck",
+                    "name": "EmployeesCheck",
+                    "target": [
+                        "EmployeesCheck"
+                    ]
+                },
+                 {
+                    "pattern": "WarnEmployee",
+                    "name": "WarnEmployee",
+                    "target": [
+                        "WarnEmployee"
+                    ]
+                },
+                {
+                    "pattern": "Employees/{objectId}",
+                    "name": "object",
+                    "target": [
+                        "object"
+                    ]
+                },
+                {
+
+                "pattern": "esterni",
+                    "name": "esterni",
+                    "target": [
+                        "Esterni"
+                    ]
+                }
+            ],
+            "targets": {
+                "Home": {
+                    "viewName": "Home",
+                    "viewId": "Home",
+                    "title": "{i18n>worklistViewTitle}"
+                },
+                "worklist": {
+                    "viewName": "Worklist",
+                    "viewId": "worklist",
+                    "title": "{i18n>worklistViewTitle}"
+                },
+                "EmployeesCheck": {
+                    "viewName": "EmployeesCheck",
+                    "viewId": "EmployeesCheck",
+                    "title": "{i18n>worklistViewTitle}"
+                },
+                "WarnEmployee": {
+                    "viewName": "WarnEmployee",
+                    "viewId": "WarnEmployee",
+                    "title": "{i18n>worklistViewTitle}"
+                },
+                "object": {
+                    "viewName": "Object",
+                    "viewId": "object",
+                    "title": "{i18n>objectViewTitle}"
+                },
+                "Esterni": {
+                    "viewName": "esterni",
+                    "viewId": "esterniID",
+                    "title": "{i18n>objectViewTitle}"
+                },
+                "objectNotFound": {
+                    "viewName": "ObjectNotFound",
+                    "viewId": "objectNotFound"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                }
+            }
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "gruppo3-gruppo3"
+    }
+}

@@ -1,0 +1,30 @@
+<mvc:View
+    controllerName="gruppo3.gruppo3.controller.WarnEmployee"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    
+    <Shell id="shell">
+	<Page id="page" title="{i18n>headerText3}" showNavButton="true" navButtonPress="onIndietro">
+        
+                <l:VerticalLayout class="sapUiContentPadding" width="100%">
+                <Label text="{i18n>headerPageFornitore}" />
+                <Input id="inputID" liveChange="liveChange" submit="click" type="Number" placeholder="{i18n>placeholderV4}" 
+                showSuggestion="true" showValueHelp="true" valueHelpRequest="handleValueHelp"  
+                width="50%" suggestionItems="{path: '/Employees'}">
+                 <suggestionItems>
+			        <core:Item text="{EmployeeID}" />
+			     </suggestionItems>
+                </Input>
+                <Button id="eQuickView"
+			         text="{i18n>meteo}"
+			         width="125px"
+			         press="onQuick"
+			         class="sapUiSmallMarginBottom"
+                     enabled="false"/>
+                </l:VerticalLayout> 
+	</Page>
+    </Shell>
+</mvc:View>

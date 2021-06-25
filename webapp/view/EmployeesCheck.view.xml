@@ -1,0 +1,129 @@
+<mvc:View xmlns:smartform="sap.ui.comp.smartform" 
+	controllerName="gruppo3.gruppo3.controller.EmployeesCheck"
+	xmlns="sap.m"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:core="sap.ui.core"
+  xmlns:form="sap.ui.layout.form"
+  xmlns:semantic="sap.f.semantic"
+  >
+  
+
+  <semantic:SemanticPage
+		id="page"
+		headerPinnable="false"
+		toggleHeaderOnTitleClick="false"
+		busy="{objectView>/busy}"
+    busyIndicatorDelay="{objectView>/delay}"
+    
+    >
+
+		<semantic:titleHeading>
+			<Title
+				text="Verifica Cliente"
+				level="H2"/>
+    </semantic:titleHeading>
+    
+    <semantic:headerContent>
+      <HBox class="breadCrumbs" width="100%" alignItems="Center">
+        <SegmentedButton class="sapUiSmallMarginBottom" width="100%">
+          <items>
+            <SegmentedButtonItem icon="sap-icon://nav-back" press="navBack"/>
+          </items>
+        </SegmentedButton>
+      </HBox>
+    </semantic:headerContent>
+
+		<semantic:content>
+      <FlexBox direction="Column">
+        <items>
+          <form:Form id="userData">
+            <form:layout>
+              <form:ColumnLayout 
+                columnsM="2"
+                columnsL="3"
+                columnsXL="4"
+              />
+            </form:layout>
+            <form:FormContainer>
+              <form:formElements>
+                <form:FormElement label="EmployeeID">
+                  <form:fields>
+                    <Input id="eIDInput" required="true" value="{formData>/EmployeeID}" type="Number" liveChange="formatEmployeeID" />
+                  </form:fields>
+                </form:FormElement>
+                <form:FormElement label="Last Name">
+                  <form:fields>
+                    <Input id="lNameInput" required="true" value="{formData>/LastName}" liveChange="formatName" />
+                  </form:fields>
+                </form:FormElement>
+                <form:FormElement label="First Name">
+                  <form:fields>
+                    <Input id="fNameInput" required="true" value="{formData>/FirstName}" liveChange="formatName"/>
+                  </form:fields>
+                </form:FormElement>
+                <form:FormElement label="Title">
+                  <form:fields>
+               <Select forceSelection="false" selectedKey="{formData>/Title}"  >
+                      <items>
+                        <core:Item key="Impiegato d’ufficio" text="Impiegato d’ufficio" />
+                        <core:Item key="Rappresentante" text="Rappresentante" />
+                        <core:Item key="Manager" text="Manager" />
+                       
+                      </items>
+                    </Select>
+                      </form:fields>
+                </form:FormElement>
+                 <form:FormElement label="Title OfCourtesy">
+                  <form:fields>
+               <Select forceSelection="false" selectedKey="{formData>/TitleOfCourtesy}" >
+                      <items>
+                        <core:Item key="Mr./ Mrs." text="Mr./ Mrs." />
+                        <core:Item key="Dr./ Dr.ssa" text="Dr./ Dr.ssa" />
+                       
+                      </items>
+                    </Select>
+                      </form:fields>
+                </form:FormElement>
+                 <form:FormElement label="Address">
+                  <form:fields>
+                    <Input id="addressInput" required="true" value="{formData>/Address}" liveChange="format" />
+                  </form:fields>
+                </form:FormElement>
+                 <form:FormElement label="City">
+                  <form:fields>
+                    <ComboBox selectionChange="cityCompiler" selectedKey="{formData>/City}">
+                      <core:Item key="Roma" text="Roma" />
+                      <core:Item key="Milano" text="Milano"/>
+                      <core:Item key="Bologna" text="Bologna"/>
+                    </ComboBox>
+                  </form:fields>
+                </form:FormElement>
+                <form:FormElement label="Region">
+                  <form:fields>
+                    <Input id="regionInput" required="true" value="{formData>/Region}" liveChange="format" />
+                  </form:fields>
+                </form:FormElement>
+                <form:FormElement label="Postal Code">
+                  <form:fields>
+                    <Input id="postalCodeInput" required="true" value="{formData>/PostalCode}"  liveChange="format"/>
+                  </form:fields>
+                </form:FormElement>
+                <form:FormElement label="Country">
+                  <form:fields>
+                    <Input id="countryInput" required="true" value="{formData>/Country}" liveChange="format" />
+                  </form:fields>
+                </form:FormElement>
+              </form:formElements>
+            </form:FormContainer>
+          </form:Form>
+          <HBox class="sapUiSmallMarginBeginEnd" justifyContent="End">
+            <Button class="sapUiSmallMarginBegin" text="Verifica" press="checkForm"/>
+            <Button class="sapUiSmallMarginBegin" text="Pulisci" press="clearForm"/>
+          </HBox>
+        </items>
+      </FlexBox>
+		</semantic:content>
+
+	</semantic:SemanticPage>
+
+</mvc:View>

@@ -1,0 +1,72 @@
+<mvc:View
+	controllerName="gruppo3.gruppo3.controller.esterni"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.f.semantic">
+<Page title="{i18n>headerText4}" id="est" showNavButton="true" navButtonPress="onIndietro1" >
+	<Table
+				id="table"
+				width="auto"
+				items="{es5>/BusinessPartnerSet}"
+				noDataText="{worklistView>/tableNoDataText}"
+				busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true"
+				growingScrollToLoad="true"
+				updateFinished=".onUpdateFinished"
+                class="sapUiLargeMargin">
+
+
+				<columns>
+					<Column id="nameColumn" >
+						<Text text="{i18n>City}" id="City"/>
+					</Column>
+                    <Column id="nameColumn1" >
+						<Text text="{i18n>Address}" id="Address"/>
+					</Column>
+                    <Column id="nameColumn2" >
+						<Text text="{i18n>Street}" id="Street"/>
+					</Column>
+                    <Column id="nameColumn3" >
+						<Text text="{i18n>Business}" id="Business"/>
+					</Column>
+                    <Column id="nameColumn4" >
+						<Text text="{i18n>Company}" id="Company"/>
+					</Column>
+                    <Column id="nameColumn5" >
+						<Text text="{i18n>Web}" id="Web"/>
+					</Column>
+					<Column id="unitNumberColumn">
+						<Text text="{i18n>Email}" id="Email"/>
+					</Column>
+				</columns>
+
+				<items>
+					<ColumnListItem>
+						<cells>
+                        <ObjectIdentifier
+								text="{es5>Address/City}"/>
+                        <ObjectIdentifier
+								text="{es5>Address/PostalCode}"/>
+                        <ObjectIdentifier
+								text="{es5>Address/Street}"/>
+                        <ObjectIdentifier
+								text="{es5>BusinessPartnerID}"/>
+                        <ObjectIdentifier
+								text="{es5>CompanyName}"/>
+                        <DisplayListItem
+                                value="{es5>WebAddress}"
+                                type="Active"
+                                press="webPress"/>
+                        <DisplayListItem
+                                value="{es5>EmailAddress}"
+                                type="Active"
+                                press="EmailPress"/>    
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+
+</Page>
+
+</mvc:View>

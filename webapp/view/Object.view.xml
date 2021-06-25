@@ -1,0 +1,95 @@
+<mvc:View
+  controllerName="gruppo3.gruppo3.controller.Object"
+	xmlns="sap.m"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:core="sap.ui.core"
+  xmlns:form="sap.ui.layout.form"
+  xmlns:semantic="sap.f.semantic"
+  >
+
+  <semantic:SemanticPage
+		id="page"
+		headerPinnable="false"
+		toggleHeaderOnTitleClick="false"
+		busy="{objectView>/busy}"
+    busyIndicatorDelay="{objectView>/delay}"
+    
+    >
+
+		<semantic:titleHeading>
+			<Title
+				text="{EmployeeID}"
+				level="H2"/>
+    </semantic:titleHeading>
+    
+    <semantic:headerContent>
+      <HBox class="breadCrumbs" width="100%" alignItems="Center">
+        <SegmentedButton class="sapUiSmallMarginBottom" width="100%">
+          <items>
+           
+            <SegmentedButtonItem width="5em" icon="sap-icon://home" text="Home" press="navToHome"/>
+          </items>
+        </SegmentedButton>
+      </HBox>
+    </semantic:headerContent>
+
+		<semantic:content>
+			<form:Form id="userData">
+        <form:layout>
+          <form:ColumnLayout 
+            columnsM="2"
+            columnsL="3"
+            columnsXL="4"
+          />
+        </form:layout>
+        <form:FormContainer>
+          <form:formElements>
+            
+            <form:FormElement label="Title of Courtesy">
+              <form:fields>
+                <Input enabled="false" value="{TitleOfCourtesy}" id="tCourtesyText"  />
+              </form:fields>
+            </form:FormElement>
+            <form:FormElement label="Birth Date">
+              <form:fields>
+                <Input enabled="false" value="{BirthDate}" id="bDateText"  />
+              </form:fields>
+            </form:FormElement>
+            <form:FormElement label="Hire Date">
+              <form:fields>
+                <Input enabled="false" value="{HireDate}" id="hDateText"  />
+              </form:fields>
+            </form:FormElement>
+            <form:FormElement label="City">
+              <form:fields>
+                <Input enabled="false" value="{PostalCode}" id="cityText"  />
+              </form:fields>
+            </form:FormElement>
+            <form:FormElement label="Region">
+              <form:fields>
+                <Input enabled="false" value="{Region}" id="regionText"  />
+              </form:fields>
+            </form:FormElement>
+            <form:FormElement label="Postal Code">
+              <form:fields>
+                <Input enabled="false" value="{PostalCode}" id="pCodeText"  />
+              </form:fields>
+            </form:FormElement>
+            <form:FormElement label="Country">
+              <form:fields>
+                <Input enabled="false" value="{Country}" id="countryText"  />
+              </form:fields>
+            </form:FormElement>
+            <form:FormElement label="Home Phone">
+              <form:fields>
+                <Input enabled="false" value="{HomePhone}" id="hPhoneText"  />
+              </form:fields>
+            </form:FormElement>
+          </form:formElements>
+        </form:FormContainer>
+      </form:Form>
+		</semantic:content>
+
+	</semantic:SemanticPage>
+
+</mvc:View>
